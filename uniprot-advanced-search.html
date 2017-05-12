@@ -1,0 +1,88 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+
+<!--
+`uniprot-advanced-search`
+Advanced search component for UniProt
+
+@demo demo/index.html
+-->
+
+<dom-module id="uniprot-advanced-search">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-input label="Search" value="{{input}}"> </paper-input>
+
+    <ul>
+      <template is="dom-repeat" items="{{paths}}">
+          <li>{{item}}</li>
+      </template>
+    </ul>
+    <div id="content"></div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'uniprot-advanced-search',
+
+      properties: {
+        data: {
+          type: Object,
+          notify: true,
+          observer: '_handleData'
+        }, input: {
+          type: String,
+          observer: '_findInPath'
+        }, paths: {
+          type: Array
+        }
+      },
+
+      _handleData(newValue, oldValue) {
+        let container = this.querySelector('#content');
+        let ulElt = document.createElement('ul');
+        this._traverseTree(newValue.members, container.appendChild(ulElt));
+      },
+
+      _traverseTree(members, container) {
+        for (let member of members) {
+          let liElt = document.createElement('li');
+          liElt.textContent = member.label;
+          container.appendChild(liElt);
+          if (member.members && member.members.length > 0) {
+            let ulElt = document.createElement('ul');
+            this._traverseTree(member.members, liElt.appendChild(ulElt));
+          }
+        }
+      },
+
+      _findPathsInTree(members, searchTerm, paths, currentPath) {
+        for (let member of members) {
+          let newPath = `${currentPath}>${member.label}`;
+          // Leaf node
+          if(!member.members) {
+              if(newPath.toLowerCase().indexOf(searchTerm.toLowerCase()) > 0){
+                paths.push(newPath);
+              }
+          } else if (member.members && member.members.length > 0) {
+            this._findPathsInTree(member.members, searchTerm, paths, newPath);
+          }
+        }
+      },
+
+      _findInPath(newValue, oldValue) {
+        if(this.data) {
+          let paths = [];
+          this._findPathsInTree(this.data.members, newValue, paths, '');
+          this.paths = paths;
+        }
+      }
+
+    });
+  </script>
+</dom-module>

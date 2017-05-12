@@ -1,0 +1,48 @@
+[{
+    "title": "Field",
+    "type": "Object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "members": {
+        "type": "array",
+        "items": {
+          "type": "Field"
+        }
+      },
+      "inputs": {
+        "type": "array",
+        "items": {
+          "type": "Input"
+        }
+      }
+    }
+  },
+
+  {
+    "title": "Input",
+    "type": "Object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "label": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string",
+        "oneOf": ["text", "number", "select", "date", "radio"]
+      },
+      "values": {
+        "type": "array"
+      },
+      "placeholder": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      }
+    }
+  }
+]
