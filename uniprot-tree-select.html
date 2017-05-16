@@ -1,0 +1,70 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="uniprot-styling.html">
+
+<!--
+`uniprot-tree-select`
+Tree select menu component for UniProt. Uses recursion.
+
+@demo demo/uniprot-tree-select-demo.html
+-->
+
+<dom-module id="uniprot-tree-select">
+  <template>
+    <style include="uniprot-styling"></style>
+    <style>
+      :host {
+        display: block;
+      }
+      li.branch > a::after {
+        position: absolute;
+        right:10px;
+        width: 0;
+        height: 0;
+        border: inset 6px;
+        content: '';
+        border-right-width: 0;
+        border-left-style: solid;
+        border-color: transparent transparent transparent #000;
+      }
+      li.branch:hover > uniprot-tree-select > ul {
+        display: block;
+        opacity: 1;
+      }
+      ul li {
+        position: relative;
+      }
+      li ul {
+        display: none;
+        opacity: 0;
+        padding-left: 1em;
+      }
+    </style>
+    <ul class$="{{getClass(submenus)}}">
+      <template is="dom-repeat" items="[[data]]">
+        <template is="dom-if" if="[[item.members]]">
+          <li class="branch"><a>[[item.label]]</a>
+            <uniprot-tree-select data="[[item.members]]"></uniprot-tree-select>
+          </li>
+        </template>
+        <template is="dom-if" if="[[!item.members]]">
+          <li><a>[[item.label]]</a></li>
+        </template>
+      </template>
+    </ul>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'uniprot-tree-select',
+
+      properties: {
+        data: {
+          type: Array
+        }, selection: {
+          type: String
+        }
+      }
+    });
+  </script>
+</dom-module>

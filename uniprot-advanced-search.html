@@ -1,28 +1,25 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="uniprot-tree-select.html">
+<link rel="import" href="uniprot-styling.html">
 
 <!--
 `uniprot-advanced-search`
 Advanced search component for UniProt
 
-@demo demo/index.html
+@demo demo/uniprot-advanced-search-demo.html
 -->
 
 <dom-module id="uniprot-advanced-search">
   <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
+    <style include="uniprot-styling"></style>
+    <uniprot-tree-select data="[[data.members]]" slot="dropdown-content"></uniprot-tree-select>
     <paper-input label="Search" value="{{input}}"> </paper-input>
-
     <ul>
       <template is="dom-repeat" items="{{paths}}">
-          <li>{{item}}</li>
+          <li><a>{{item}}</a></li>
       </template>
     </ul>
-    <div id="content"></div>
   </template>
 
   <script>
@@ -32,9 +29,7 @@ Advanced search component for UniProt
 
       properties: {
         data: {
-          type: Object,
-          notify: true,
-          observer: '_handleData'
+          type: Object
         }, input: {
           type: String,
           observer: '_findInPath'
@@ -43,27 +38,14 @@ Advanced search component for UniProt
         }
       },
 
-      _handleData(newValue, oldValue) {
-        let container = this.querySelector('#content');
-        let ulElt = document.createElement('ul');
-        this._traverseTree(newValue.members, container.appendChild(ulElt));
-      },
-
-      _traverseTree(members, container) {
-        for (let member of members) {
-          let liElt = document.createElement('li');
-          liElt.textContent = member.label;
-          container.appendChild(liElt);
-          if (member.members && member.members.length > 0) {
-            let ulElt = document.createElement('ul');
-            this._traverseTree(member.members, liElt.appendChild(ulElt));
-          }
-        }
-      },
-
       _findPathsInTree(members, searchTerm, paths, currentPath) {
         for (let member of members) {
-          let newPath = `${currentPath}>${member.label}`;
+          let newPath = '';
+          if(currentPath.length <= 0) {
+            newPath = `${member.label}`;
+          } else {
+            newPath = `${currentPath} > ${member.label}`;
+          }
           // Leaf node
           if(!member.members) {
               if(newPath.toLowerCase().indexOf(searchTerm.toLowerCase()) > 0){
@@ -77,6 +59,7 @@ Advanced search component for UniProt
 
       _findInPath(newValue, oldValue) {
         if(this.data) {
+          // hide dropdown, show autocomplete
           let paths = [];
           this._findPathsInTree(this.data.members, newValue, paths, '');
           this.paths = paths;
