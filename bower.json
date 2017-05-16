@@ -4,7 +4,7 @@
   "main": "uniprot-advanced-search.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "paper-input": "^1.1.24"
+    "paper-input": "^2.0.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

@@ -13,13 +13,20 @@ Advanced search component for UniProt
 <dom-module id="uniprot-advanced-search">
   <template>
     <style include="uniprot-styling"></style>
-    <uniprot-tree-select data="[[data.members]]" slot="dropdown-content"></uniprot-tree-select>
+    <style>
+    :host {
+      display: block;
+    }
+    </style>
+    <h4>Search:</h4>
     <paper-input label="Search" value="{{input}}"> </paper-input>
     <ul>
       <template is="dom-repeat" items="{{paths}}">
           <li><a>{{item}}</a></li>
       </template>
     </ul>
+    <h4>Select:</h4>
+    <uniprot-tree-select data="[[data.members]]" slot="dropdown-content" selection="{{selection}}"></uniprot-tree-select>
   </template>
 
   <script>
@@ -35,6 +42,9 @@ Advanced search component for UniProt
           observer: '_findInPath'
         }, paths: {
           type: Array
+        }, selection: {
+          type: String,
+          observer: '_selectItems'
         }
       },
 
@@ -64,6 +74,10 @@ Advanced search component for UniProt
           this._findPathsInTree(this.data.members, newValue, paths, '');
           this.paths = paths;
         }
+      },
+
+      _selectItems(newValue, oldValue) {
+        console.log(newValue);
       }
 
     });

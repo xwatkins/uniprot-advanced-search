@@ -47,7 +47,7 @@ Tree select menu component for UniProt. Uses recursion.
           </li>
         </template>
         <template is="dom-if" if="[[!item.members]]">
-          <li><a>[[item.label]]</a></li>
+          <li><a on-tap="handletap">[[item.label]]</a></li>
         </template>
       </template>
     </ul>
@@ -62,8 +62,15 @@ Tree select menu component for UniProt. Uses recursion.
         data: {
           type: Array
         }, selection: {
-          type: String
+          type: String,
+          notify: true
         }
+      },
+
+      handletap: function(e) {
+        //TODO we need to store the parent path somewhere in the elements and return it here
+        //TODO highlight the whole path
+        this.selection = e.target.innerText
       }
     });
   </script>
