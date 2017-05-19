@@ -1,14 +1,7 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="uniprot-tree-select.html">
 <link rel="import" href="uniprot-styling.html">
-
-<!--
-`uniprot-advanced-search`
-Advanced search component for UniProt
-
-@demo demo/uniprot-advanced-search-demo.html
--->
 
 <dom-module id="uniprot-advanced-search">
   <template>
@@ -26,60 +19,108 @@ Advanced search component for UniProt
       </template>
     </ul>
     <h4>Select:</h4>
+    <span>[[selection]]</span>
     <uniprot-tree-select data="[[data.members]]" slot="dropdown-content" selection="{{selection}}"></uniprot-tree-select>
   </template>
 
   <script>
-    Polymer({
+    /**
+     * `uniprot-advanced-search`
+     * Advanced search component for UniProt
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/uniprot-advanced-search-demo.html
+     */
+    class UniProtAdvancedSearch extends Polymer.Element {
 
-      is: 'uniprot-advanced-search',
+      static get is() {
+        return 'uniprot-advanced-search';
+      }
 
-      properties: {
-        data: {
-          type: Object
-        }, input: {
-          type: String,
-          observer: '_findInPath'
-        }, paths: {
-          type: Array
-        }, selection: {
-          type: String,
-          observer: '_selectItems'
+      static get properties() {
+        return {
+          data: {
+            type: Object
+          },
+          input: {
+            type: String
+          },
+          paths: {
+            type: Array
+          },
+          selection: {
+            type: String
+          }
         }
-      },
+      }
+
+      static get observers() {
+        return [
+          '_findInPath(input)', '_selectItems(selection)'
+        ]
+      }
+
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+      }
+
 
       _findPathsInTree(members, searchTerm, paths, currentPath) {
+        //TODO don't think it finds 1st level nodes...
         for (let member of members) {
           let newPath = '';
-          if(currentPath.length <= 0) {
+          if (currentPath.length <= 0) {
             newPath = `${member.label}`;
           } else {
             newPath = `${currentPath} > ${member.label}`;
           }
           // Leaf node
-          if(!member.members) {
-              if(newPath.toLowerCase().indexOf(searchTerm.toLowerCase()) > 0){
-                paths.push(newPath);
-              }
+          if (!member.members) {
+            if (newPath.toLowerCase().indexOf(searchTerm.toLowerCase()) > 0) {
+              paths.push(newPath);
+            }
           } else if (member.members && member.members.length > 0) {
             this._findPathsInTree(member.members, searchTerm, paths, newPath);
           }
         }
-      },
-
-      _findInPath(newValue, oldValue) {
-        if(this.data) {
-          // hide dropdown, show autocomplete
-          let paths = [];
-          this._findPathsInTree(this.data.members, newValue, paths, '');
-          this.paths = paths;
-        }
-      },
-
-      _selectItems(newValue, oldValue) {
-        console.log(newValue);
       }
 
-    });
+      _findInPath(searchTerm) {
+        if (this.data) {
+          //TODO hide dropdown, show autocomplete
+          let paths = [];
+          this._findPathsInTree(this.data.members, searchTerm, paths, '');
+          this.paths = paths;
+        }
+      }
+
+      _findPathById(id) {
+        console.log(this._traverseTree(this.data.members, id, []));
+      }
+
+      _traverseTree(members, id, path) {
+        for (let item of members) {
+          path.push(item);
+          if (item.id === id) { //found it, return the path
+            return path;
+          }
+          if (item.members) {
+            this._traverseTree(item.members, id, path);
+          }
+          path.pop()
+        }
+      }
+
+      _selectItems(selectedItem) {
+        console.log(selectedItem);
+        this._findPathById(selectedItem);
+      }
+    }
+    window.customElements.define(UniProtAdvancedSearch.is, UniProtAdvancedSearch);
   </script>
 </dom-module>

@@ -10,20 +10,24 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../uniprot-advanced-search.html">
     <link rel="import" href="../../iron-ajax/iron-ajax.html">
+    <link rel="import" href="../uniprot-advanced-search.html">
 
-    <style is="custom-style" include="demo-pages-shared-styles">
-    </style>
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic uniprot-advanced-search demo</h3>
       <demo-snippet>
-        <template is="dom-bind">
-            <iron-ajax auto url="./advanced_search_data.json" handle-as="json" last-response="{{data}}"></iron-ajax>
-            <uniprot-advanced-search data="[[data]]"></uniprot-advanced-search>
-        </template>
+        <dom-bind>
+          <template>
+              <iron-ajax auto url="./advanced_search_data_ids.json" handle-as="json" last-response="{{data}}"></iron-ajax>
+              <uniprot-advanced-search data="[[data]]"></uniprot-advanced-search>
+          </template>
+        </dom-bind>
       </demo-snippet>
     </div>
   </body>

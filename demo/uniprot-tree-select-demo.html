@@ -11,16 +11,17 @@
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../uniprot-tree-select.html">
-
-    <style is="custom-style" include="demo-pages-shared-styles">
-    </style>
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic uniprot-tree-select demo</h3>
       <demo-snippet>
         <template>
-            <uniprot-tree-select data='[{"label":"item 1","members":[{"label":"item 1p","members":[{"label":"3"},{"label":"4"}]}]},{"label":"item 2"}]'></uniprot-tree-select>
+            <uniprot-tree-select data='[{"label":"item 1","id":"1","members":[{"label":"item 1p","id":"1p","members":[{"label":"3","id":"3"},{"label":"4","id":"4"}]}]},{"label":"item 2","id":"2"}]'></uniprot-tree-select>
         </template>
       </demo-snippet>
     </div>

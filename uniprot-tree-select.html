@@ -1,12 +1,5 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="uniprot-styling.html">
-
-<!--
-`uniprot-tree-select`
-Tree select menu component for UniProt. Uses recursion.
-
-@demo demo/uniprot-tree-select-demo.html
--->
 
 <dom-module id="uniprot-tree-select">
   <template>
@@ -26,7 +19,7 @@ Tree select menu component for UniProt. Uses recursion.
         border-left-style: solid;
         border-color: transparent transparent transparent #000;
       }
-      li.branch:hover > uniprot-tree-select > ul {
+      li.branch:hover > ul {
         display: block;
         opacity: 1;
       }
@@ -38,40 +31,98 @@ Tree select menu component for UniProt. Uses recursion.
         opacity: 0;
         padding-left: 1em;
       }
+      .active {
+        font-weight: bold;
+      }
     </style>
-    <ul class$="{{getClass(submenus)}}">
-      <template is="dom-repeat" items="[[data]]">
-        <template is="dom-if" if="[[item.members]]">
-          <li class="branch"><a>[[item.label]]</a>
-            <uniprot-tree-select data="[[item.members]]"></uniprot-tree-select>
-          </li>
-        </template>
-        <template is="dom-if" if="[[!item.members]]">
-          <li><a on-tap="handletap">[[item.label]]</a></li>
-        </template>
-      </template>
-    </ul>
+    <ul id="treerootlist"></ul>
   </template>
 
   <script>
-    Polymer({
+    /**
+     * `uniprot-tree-select`
+     * Tree select menu component for UniProt. Uses recursion.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/uniprot-tree-select-demo.html
+     */
+    class UniProtTreeSelect extends Polymer.Element {
 
-      is: 'uniprot-tree-select',
-
-      properties: {
-        data: {
-          type: Array
-        }, selection: {
-          type: String,
-          notify: true
-        }
-      },
-
-      handletap: function(e) {
-        //TODO we need to store the parent path somewhere in the elements and return it here
-        //TODO highlight the whole path
-        this.selection = e.target.innerText
+      static get is() {
+        return 'uniprot-tree-select';
       }
-    });
+
+      static get properties() {
+        return {
+          data: {
+            type: Array
+          },
+          selection: {
+            type: String,
+            notifies: true
+          }
+        }
+      }
+
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        this._handleData();
+      }
+
+      _handleData() {
+        let treeRootList = this.$.treerootlist;
+        this._traverseTree(this.data, treeRootList);
+      }
+
+      _traverseTree(data, el) {
+        for (let item of data) {
+          let li = document.createElement('li');
+          let anchor = document.createElement('a');
+          anchor.textContent = item.label;
+          li.appendChild(anchor);
+          el.appendChild(li);
+          if (item.members) {
+            let ul = document.createElement('ul')
+            li.className = 'branch';
+            li.appendChild(ul);
+            this._traverseTree(item.members, ul);
+          } else {
+            li.addEventListener('click', e => this._handleTap(e));
+          }
+        }
+      }
+
+      _highlightPathToTarget(t) {
+        if(t.id === 'treerootlist') {
+          return;
+        } else if(t.tagName === 'LI') {
+          t.querySelector('a').classList.add('active');
+        }
+        if(t.parentNode) {
+          this._highlightPathToTarget(t.parentNode);
+        }
+      }
+
+      _clearHighlightedPaths() {
+        let elts = this.shadowRoot.querySelectorAll('.active');
+        for(let elt of elts) {
+          elt.classList.remove('active');
+        }
+      }
+
+      _handleTap(e) {
+        this._clearHighlightedPaths();
+        this._highlightPathToTarget(e.target);
+        this.selection = e.target.id;
+      }
+
+    }
+
+    window.customElements.define(UniProtTreeSelect.is, UniProtTreeSelect);
   </script>
 </dom-module>

@@ -1,0 +1,2001 @@
+{
+  "label": "",
+  "members": [{
+    "label": "All",
+    "inputs": [{
+      "queryField": "",
+      "label": "Term",
+      "type": "text"
+    }],
+    "id": "ihtanidcmt7qxyxu07ldi"
+  }, {
+    "label": "UniProtKB AC",
+    "inputs": [{
+      "queryField": "id",
+      "label": "Term",
+      "type": "text"
+    }],
+    "id": "qtkfkmm7oafk6kfn7b9"
+  }, {
+    "label": "Entry name [ID]",
+    "inputs": [{
+      "queryField": "mnemonic",
+      "label": "Term",
+      "type": "text"
+    }],
+    "id": "ox8xq0tt9a4gljjug14i"
+  }, {
+    "label": "Protein name [DE]",
+    "inputs": [{
+      "queryField": "name",
+      "label": "Term",
+      "type": "text"
+    }],
+    "id": "6b8od91jhgr5gue4s4i"
+  }, {
+    "label": "Gene name [GN]",
+    "inputs": [{
+      "queryField": "gene",
+      "label": "Term",
+      "type": "text"
+    }],
+    "id": "zjqus49adc59n609hpvi"
+  }, {
+    "label": "Organism [OS]",
+    "inputs": [{
+      "queryField": "organism",
+      "label": "Term",
+      "type": "text"
+    }],
+    "id": "f8dhzedqbvnw4m2njyvi"
+  }, {
+    "label": "Taxonomy [OC]",
+    "inputs": [{
+      "queryField": "taxonomy",
+      "label": "Term",
+      "type": "text"
+    }],
+    "id": "0yxz4wzkf5fe2ep14i"
+  }, {
+    "label": "Virus host",
+    "inputs": [{
+      "queryField": "host",
+      "label": "Term",
+      "type": "text"
+    }],
+    "id": "xouth0clykahm6de7b9"
+  }, {
+    "label": "Protein Existence [PE]",
+    "members": [{
+      "name": "evidence at protein level",
+      "label": "Evidence at protein level",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "existence"
+      }],
+      "id": "o9wf75lraem9e1tc5wmi"
+    }, {
+      "name": "evidence at transcript level",
+      "label": "Evidence at transcript level",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "existence"
+      }],
+      "id": "ctd0huu1qsj1a1owp14i"
+    }, {
+      "name": "inferred from homology",
+      "label": "Inferred from homology",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "existence"
+      }],
+      "id": "qby57pes1yj6xb580vn29"
+    }, {
+      "name": "predicted",
+      "label": "Predicted",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "existence"
+      }],
+      "id": "x2vz9igwhdwllqouhaor"
+    }, {
+      "name": "uncertain",
+      "label": "Uncertain",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "existence"
+      }],
+      "id": "uwazviykhbu5dpqcwhfr"
+    }],
+    "id": "fes32bcm4zdchoqx5hfr"
+  }, {
+    "label": "Function",
+    "members": [{
+      "label": "Enzyme classification [EC]",
+      "inputs": [{
+        "queryField": "ec",
+        "label": "Term",
+        "type": "text"
+      }],
+      "id": "aulbrw4evkspw0v5z5mi"
+    }, {
+      "label": "Biophysicochemical properties",
+      "members": [{
+        "name": "ann.biophysicochemical_properties",
+        "label": "Any",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "0v2m4ofws7j1mleg66r"
+      }, {
+        "name": "ann.absorption",
+        "label": "Absorption",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "f3bihxmym5fe9te9daemi"
+      }, {
+        "name": "ann.kinetic",
+        "label": "Kinetics",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "3jkjzv3sggi54oaqt1emi"
+      }, {
+        "name": "ann.ph dependence",
+        "label": "ph dependence",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "c49vfrlxq85c5vov18aor"
+      }, {
+        "name": "ann.redox potential",
+        "label": "Redox potential",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "mspkul2rbaztpsexw29"
+      }, {
+        "name": "ann.temperature dependence",
+        "label": "Temperature dependence",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "axzv3ofhjfoeu7toi529"
+      }],
+      "id": "0k7ekh36zwtv45xdjwcdi"
+    }, {
+      "label": "Catalytic activity",
+      "name": "ann.catalytic activity",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "3ufo1cq6jfgeppv3rf6r"
+    }, {
+      "label": "Enzyme regulation",
+      "name": "ann.enzyme regulation",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "mx7yvsf0uo2lr51jdcxr"
+    }, {
+      "label": "Function [CC]",
+      "name": "ann.function",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "b5of2vgx2s2k4k9iicnmi"
+    }, {
+      "label": "Note",
+      "name": "cofactor",
+      "inputs": [{
+        "queryField": "note",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "375475xvt5ndsw34bo6r"
+    }, {
+      "label": "ChEBI term",
+      "name": "cofactor",
+      "inputs": [{
+        "queryField": "chebi",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "j91soaw7v85cllj1c3di"
+    }, {
+      "label": "Sites",
+      "members": [{
+        "label": "Any",
+        "name": "ann.sites",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "4j2c1ormqfkh4v3ac3di"
+      }, {
+        "label": "Active site",
+        "name": "ann.act_site",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "2ebg6vrxit29vrou5wmi"
+      }, {
+        "label": "Metal binding",
+        "name": "ann.metal",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "e68yubb3zt3kk9iv5z5mi"
+      }, {
+        "label": "Binding site",
+        "name": "ann.binding",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "6u7d6k5fcypolwbqpvi"
+      }, {
+        "label": "Other",
+        "name": "ann.site",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "gw25wqho0gg2qnk7f1or"
+      }],
+      "id": "088f41br57zxlohto6r"
+    }, {
+      "label": "Calcium binding",
+      "name": "ann.ca_bind",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "ec1vnt3w1hx6bgywg66r"
+    }, {
+      "label": "DNA binding",
+      "name": "ann.dna_bind",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "y1dam9bpc4jzbp22o6r"
+    }, {
+      "label": "Nucleotide binding",
+      "name": "ann.np_bind",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "livuyandv6ltrqkznnrk9"
+    }, {
+      "label": "Pathway",
+      "name": "ann.pathway",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "xsk40ovbig9m6etgldi"
+    }],
+    "id": "7tnflv9uahv5qivhd7vi"
+  }, {
+    "label": "Subcellular location",
+    "members": [{
+      "label": "Subcellular location [CC]",
+      "members": [{
+        "label": "Subcellular location term",
+        "inputs": [{
+          "queryField": "location",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Evidence",
+          "type": "select",
+          "options": {}
+        }, {
+          "queryField": "type",
+          "label": "Type",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "6v8dffgnr17svmkg9zfr"
+      }, {
+        "label": "Note",
+        "inputs": [{
+          "queryField": "note",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Evidence",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "tvnzvppn4sxkzb79cnmi"
+      }],
+      "id": "59r9r726x5vyrjb07wrk9"
+    }, {
+      "label": "Transmembrane",
+      "name": "ann.transmem",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "6hzvfkes7xaj4brqw7b9"
+    }, {
+      "label": "Topological domain",
+      "name": "ann.topo_dom",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "82d82f0qjwr97cnjnhfr"
+    }, {
+      "label": "Intramembrane",
+      "name": "ann.intramem",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "6j69t6n79f00q5v1jor"
+    }],
+    "id": "hepedh78rodprhciyhkt9"
+  }, {
+    "label": "Pathology & Biotech",
+    "members": [{
+      "label": "Disease",
+      "name": "ann.disease",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "rspzimlsmcyb0t9ms4i"
+    }, {
+      "label": "Allergenic properties",
+      "name": "ann.allergen",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "ifk7gsnc1ph6rh9i19k9"
+    }, {
+      "label": "Toxic dose",
+      "name": "ann.toxic dose",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "p805o6tk4z8bl545cdi"
+    }, {
+      "label": "Biotechnological use",
+      "name": "ann.biotechnology",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "ucbbil7uk2lqclzestt9"
+    }, {
+      "label": "Pharmaceutical use",
+      "name": "ann.pharmaceutical",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "j161ytw1ks3qxatnjyvi"
+    }, {
+      "label": "Disruption phenotype",
+      "name": "ann.disruption",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "0pg3v1lz9le3o2vgqfr"
+    }, {
+      "label": "Mutagenesis",
+      "name": "ann.mutagen",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "bjatynqvdjhwosrcz0k9"
+    }],
+    "id": "2ehfjdaavvpqy4jnstt9"
+  }, {
+    "label": "PTM/Processing",
+    "members": [{
+      "label": "Post-translational modification [CC]",
+      "name": "ann.ptm",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "5is45tazn4jgg4nxko6r"
+    }, {
+      "label": "Modified residue [FT]",
+      "name": "ann.mod_res",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "sfiv5ib223joq8rozuxr"
+    }, {
+      "label": "Lipidation [FT]",
+      "name": "ann.lipid",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "gppludhul7m675y7gb9"
+    }, {
+      "label": "Glycosylation [FT]",
+      "name": "ann.carbohyd",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "bnxq8e8q58kzgg9tqpvi"
+    }, {
+      "label": "Disulfide bond [FT]",
+      "name": "ann.disulfid",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "25xjis8jj5ua5rx2bj4i"
+    }, {
+      "label": "Cross-link [FT]",
+      "name": "ann.crosslnk",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "d1l3ivkeim2bg9zfr"
+    }, {
+      "label": "Molecule Processing",
+      "members": [{
+        "label": "Any",
+        "name": "ann.molecule_processing",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "up4z2erv3430janel8fr"
+      }, {
+        "label": "Chain",
+        "name": "ann.chain",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "6no2sobf8wnrkg7hqia4i"
+      }, {
+        "label": "Initiator methionine",
+        "name": "ann.init_met",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "7h47wy6ilr03c4vlsor"
+      }, {
+        "label": "Peptide",
+        "name": "ann.peptide",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "32lrs8e6attg5ov2njyvi"
+      }, {
+        "label": "Signal peptide",
+        "name": "ann.signal",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "jut4wz33mf9o3v8l4n29"
+      }, {
+        "label": "Propeptide",
+        "name": "ann.propep",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "oztxe3s9j69wht3jif6r"
+      }, {
+        "label": "Transit peptide",
+        "name": "ann.transit",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "d9s1dm6e7jr58aug14i"
+      }],
+      "id": "50hjtj1d1crqc7atc5wmi"
+    }],
+    "id": "h591g9z0dhakv8q41jor"
+  }, {
+    "label": "Expression",
+    "members": [{
+      "label": "Developmental stage",
+      "name": "ann.developmental stage",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "8xyokzepij08kyy14i"
+    }, {
+      "label": "Induction",
+      "name": "ann.induction",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "sk1j4q292ka1oqadcxr"
+    }, {
+      "label": "Tissue specificity",
+      "name": "ann.tissue specificity",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "1sou6ec7r3qz2w97ldi"
+    }],
+    "id": "jd8p0b9utzqcvi74aemi"
+  }, {
+    "label": "Interaction",
+    "members": [{
+      "label": "Binary Interaction",
+      "inputs": [{
+        "queryField": "interactor",
+        "label": "Term",
+        "type": "text"
+      }],
+      "id": "y7xzi2543fblgom9529"
+    }, {
+      "label": "Subunit structure",
+      "name": "ann.subunit",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "6egnmapcqct603ma38fr"
+    }],
+    "id": "jxod9i12it73a0chxgvi"
+  }, {
+    "label": "Structure",
+    "members": [{
+      "label": "3D structure",
+      "members": [{
+        "label": "yes",
+        "name": "yes",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "_struct"
+        }],
+        "id": "an46bbmzi7ryd7u2qpvi"
+      }, {
+        "label": "no",
+        "name": "no",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "_struct"
+        }],
+        "id": "ok4rdfs85xvf9v7r885mi"
+      }],
+      "id": "qac7lswn9trmifb0rudi"
+    }, {
+      "label": "Secondary structure",
+      "members": [{
+        "label": "Any",
+        "name": "ann.secstruct",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "k9xbgn8coebkv8jpds4i"
+      }, {
+        "label": "Helix",
+        "name": "ann.helix",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "q9zfs8g926s6hfasxxbt9"
+      }, {
+        "label": "Turn",
+        "name": "ann.turn",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "5kz0m6yvk6741xhb5u3di"
+      }, {
+        "label": "Beta strand",
+        "name": "ann.strand",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "a5s2l7ub5jnxcso1dcxr"
+      }],
+      "id": "fgl3xwy3hw4o54z8semi"
+    }],
+    "id": "8m3l2myokmd91gi4quxr"
+  }, {
+    "label": "Sequence",
+    "members": [{
+      "label": "Mass (Da)",
+      "inputs": [{
+        "queryField": "mass",
+        "label": "Mass range",
+        "type": "range"
+      }],
+      "id": "c4snp6u2qvrwxaiz4cxr"
+    }, {
+      "label": "Sequence length",
+      "inputs": [{
+        "queryField": "length",
+        "label": "Sequence Length",
+        "type": "range"
+      }],
+      "id": "320cn8si6bckh0lbfyldi"
+    }, {
+      "label": "Alternative products (isoforms)",
+      "members": [{
+        "label": "Any",
+        "name": "ann.alternative products",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "sig4b6e5gzj0l6a5g66r"
+      }, {
+        "label": "Alternative promoter usage",
+        "name": "ann.alternative promoter usage",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "jy8c8lo4itjtp0ttke29"
+      }, {
+        "label": "Alternative splicing",
+        "name": "ann.alternative splicing",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "x5qr7wrj8ibgjy8pvi"
+      }, {
+        "label": "Alternative initiation",
+        "name": "ann.alternative initiation",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "hpyr3qmfoazdvy2satt9"
+      }, {
+        "label": "Ribosomal frameshifting",
+        "name": "ann.ribosomal frameshifting",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "s94t3cliwg43rjzqto6r"
+      }],
+      "id": "fkqkexizrgz4tb7qfr"
+    }, {
+      "label": "Caution",
+      "name": "ann.caution",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "rlen68v981t47zeyiudi"
+    }, {
+      "label": "Sequence caution",
+      "members": [{
+        "label": "Any",
+        "name": "ann.sequence caution",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "h1nwby65bew57p4rhpvi"
+      }, {
+        "label": "Frameshift",
+        "name": "ann.frameshift",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }],
+        "id": "f5ukzg1nhky6p7qzolxr"
+      }, {
+        "label": "Erroneous initiation",
+        "name": "ann.erroneous initiation",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }],
+        "id": "eqso2xgf3g6miu9885mi"
+      }, {
+        "label": "Erroneous termination",
+        "name": "ann.erroneous termination",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }],
+        "id": "8yzv9t75ua20rkricnmi"
+      }, {
+        "label": "Erroneous gene model prediction",
+        "name": "ann.erroneous gene model prediction",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }],
+        "id": "9mwdpbqul5363qsemi"
+      }, {
+        "label": "Erroneous translation",
+        "name": "ann.erroneous translation",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }],
+        "id": "s72vpmzlc2gnfvtj1nhfr"
+      }, {
+        "label": "Miscellaneous discrepancy",
+        "name": "ann.miscellaneous discrepancy",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "34gmbdxb8n7oic6jemi"
+      }],
+      "id": "kj7tkb7zzmmi8zkc5wmi"
+    }, {
+      "label": "Mass spectrometry",
+      "name": "ann.mass",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "2iw1bbmwh0v8uh0py14i"
+    }, {
+      "label": "Polymorphism",
+      "name": "ann.polymorphism",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "v0f5zsfmw4tk5p3z0k9"
+    }, {
+      "label": "RNA Editing",
+      "name": "ann.rna editing",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "wmdvx2gux5dic9apuv7vi"
+    }, {
+      "label": "Natural variations",
+      "members": [{
+        "label": "Any",
+        "name": "ann.natural_variations",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "h0qfyt6vq795vqzx5hfr"
+      }, {
+        "label": "Natural variant",
+        "name": "ann.variant",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "uiwib3dd9hxtmf17nwmi"
+      }, {
+        "label": "Alternative sequence",
+        "name": "ann.var_seq",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "type"
+        }, {
+          "queryField": "",
+          "label": "Term",
+          "type": "text"
+        }, {
+          "queryField": "length",
+          "label": "Length range",
+          "type": "textrange"
+        }, {
+          "queryField": "evidence",
+          "label": "Term",
+          "type": "select",
+          "options": {}
+        }],
+        "id": "475jusj7er5uyrkonu3di"
+      }],
+      "id": "8qc5woiu1i29fb0rudi"
+    }, {
+      "label": "Non-standard residue",
+      "name": "ann.non_std",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "a7rjty3ke57bytujzia4i"
+    }, {
+      "label": "Non-terminal residue",
+      "name": "ann.non_ter",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "1s23urcsxxpcp6x39pb9"
+    }, {
+      "label": "Non-adjacent residues",
+      "name": "ann.non_cons",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "1gp9ac7vqwoy2dj10pb9"
+    }, {
+      "label": "Sequence conflict",
+      "name": "ann.conflict",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "5pafcl41u6oegauxtuik9"
+    }, {
+      "label": "Sequence uncertainty",
+      "name": "ann.unsure",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "h8xlefk7iqjkhzdxi529"
+    }, {
+      "label": "Sequence features [FT]",
+      "name": "ann.positional",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "length",
+        "label": "Length range",
+        "type": "textrange"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "lhbbjai3qrvmmmrkke29"
+    }, {
+      "label": "Fragment",
+      "members": [{
+        "label": "Yes",
+        "name": "yes",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "fragment"
+        }],
+        "id": "1qiycgvscb2eudcayvi"
+      }, {
+        "label": "No",
+        "name": "no",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "fragment"
+        }],
+        "id": "nb62q5g99eqaxk5oecdi"
+      }],
+      "id": "rpm8sndmskzdajlwhfr"
+    }, {
+      "label": "Encoded in",
+      "inputs": [{
+        "queryField": "organelle",
+        "label": "Term",
+        "type": "text"
+      }],
+      "id": "ibpw37kr1xa6rtq08uxr"
+    }, {
+      "label": "Precursor",
+      "members": [{
+        "label": "Yes",
+        "name": "yes",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "precursor"
+        }],
+        "id": "fdva52kjf9ng2de80vn29"
+      }, {
+        "label": "No",
+        "name": "no",
+        "inputs": [{
+          "type": "hidden",
+          "queryField": "precursor"
+        }],
+        "id": "9ei5ta5hf7sgx65n4s4i"
+      }],
+      "id": "m2k5fld657927lmr6bt9"
+    }, {
+      "label": "Sequence from... [RC]",
+      "members": [{
+        "label": "Tissue",
+        "inputs": [{
+          "type": "text",
+          "queryField": "tissue",
+          "label": "Term"
+        }],
+        "id": "w6ix7h3n31x82sc92j4i"
+      }, {
+        "label": "Strain",
+        "inputs": [{
+          "type": "text",
+          "queryField": "strain",
+          "label": "Term"
+        }],
+        "id": "d2r9xeoz8mdyehkqehfr"
+      }, {
+        "label": "Plasmid",
+        "inputs": [{
+          "type": "text",
+          "queryField": "plasmid",
+          "label": "Term"
+        }],
+        "id": "am9rhuzzggz4o3sxajor"
+      }, {
+        "label": "Transposon",
+        "inputs": [{
+          "type": "text",
+          "queryField": "transposon",
+          "label": "Term"
+        }],
+        "id": "n804jzzcb1lb6672e29"
+      }],
+      "id": "fb1aaducv4oug08gp66r"
+    }],
+    "id": "bhffwqc2hdiqqoos9k9"
+  }, {
+    "label": "Family and Domains",
+    "members": [{
+      "label": "Domain comments [CC]",
+      "name": "ann.non-positional domain",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "ehnkp6qq7inf0mnuq5mi"
+    }, {
+      "label": "Protein family",
+      "inputs": [{
+        "type": "text",
+        "queryField": "family",
+        "label": "Term"
+      }],
+      "id": "8hj924ycoztdd0di8jjor"
+    }, {
+      "label": "Sequence similarities",
+      "name": "ann.similarity",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "type"
+      }, {
+        "queryField": "",
+        "label": "Term",
+        "type": "text"
+      }, {
+        "queryField": "evidence",
+        "label": "Term",
+        "type": "select",
+        "options": {}
+      }],
+      "id": "2qc1ifk65m0mw7v6lxr"
+    }],
+    "id": "k22q0sybupjr34m67p66r"
+  }, {
+    "label": "Web resource",
+    "inputs": [{
+      "type": "text",
+      "queryField": "web",
+      "label": "Term"
+    }],
+    "id": "q1m5enhrn79exbf0f6r"
+  }, {
+    "label": "Date of",
+    "members": [{
+      "label": "Date of creation",
+      "inputs": [{
+        "type": "date range",
+        "queryField": "created",
+        "label": "Term"
+      }],
+      "id": "jfcwq305aiwsnxt7qfr"
+    }, {
+      "label": "Date of last entry modification",
+      "inputs": [{
+        "type": "date range",
+        "queryField": "created",
+        "label": "Term"
+      }],
+      "id": "pbqqw5a17c08pf4j9k9"
+    }, {
+      "label": "Date of last sequence modification",
+      "inputs": [{
+        "type": "date range",
+        "queryField": "created",
+        "label": "Term"
+      }],
+      "id": "f2w8ykorx8a3jc6xn7b9"
+    }],
+    "id": "zvco0q3h105507mmcmcxr"
+  }, {
+    "label": "Gene Ontology [GO]",
+    "name": "goa",
+    "inputs": [{
+      "queryField": "",
+      "label": "Term",
+      "type": "text"
+    }, {
+      "queryField": "evidence",
+      "label": "Term",
+      "type": "select",
+      "options": {}
+    }],
+    "id": "vclfrmq55gjp4g59afw29"
+  }, {
+    "label": "Keyword [KW]",
+    "inputs": [{
+      "type": "text",
+      "queryField": "keyword",
+      "label": "Term"
+    }],
+    "id": "bes0ai1q5d9y7u0ltyb9"
+  }, {
+    "label": "Literature Citation",
+    "name": "citation",
+    "inputs": [{
+      "type": "text",
+      "queryField": "",
+      "label": "Title & Abstract"
+    }, {
+      "type": "text",
+      "queryField": "author",
+      "label": "Author"
+    }, {
+      "type": "text",
+      "queryField": "journal",
+      "label": "Journal"
+    }, {
+      "type": "text",
+      "queryField": "published",
+      "label": "Published"
+    }, {
+      "type": "text",
+      "queryField": "id",
+      "label": "PubMed Id"
+    }, {
+      "type": "text",
+      "queryField": "title",
+      "label": "Title"
+    }],
+    "id": "1t3lsgososf22mrhpvi"
+  }, {
+    "label": "Proteomes",
+    "members": [{
+      "label": "Proteome ID",
+      "inputs": [{
+        "type": "text",
+        "queryField": "proteome",
+        "label": "Term"
+      }],
+      "id": "di7i0aye5jl6ue9rizfr"
+    }, {
+      "label": "Proteome Component",
+      "inputs": [{
+        "type": "text",
+        "queryField": "proteomecomponent",
+        "label": "Term"
+      }],
+      "id": "uv7xm8jl4041jwrbpgb9"
+    }],
+    "id": "egmd8stg6djl6is76tj4i"
+  }, {
+    "label": "Cited For",
+    "inputs": [{
+      "type": "text",
+      "queryField": "scope",
+      "label": "Term"
+    }],
+    "id": "mzkq774ly8hs9rwidx6r"
+  }, {
+    "label": "Reviewed",
+    "members": [{
+      "label": "Yes",
+      "name": "yes",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "reviewed"
+      }],
+      "id": "dhagz9vusq1lox4oyldi"
+    }, {
+      "label": "No",
+      "name": "no",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "reviewed"
+      }],
+      "id": "jk8urwsm25fhdqqnz5mi"
+    }],
+    "id": "6yn76yfow7xoidym0a4i"
+  }, {
+    "label": "Active",
+    "members": [{
+      "label": "Yes",
+      "name": "yes",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "active"
+      }],
+      "id": "d4p4kz7jv1lnfgwx9a4i"
+    }, {
+      "label": "No",
+      "name": "no",
+      "inputs": [{
+        "type": "hidden",
+        "queryField": "active"
+      }],
+      "id": "lgg7b0f8wfm8bbuc5l8fr"
+    }],
+    "id": "lantr0cwc7sd90sh5mi"
+  }, {
+    "label": "UniRef ID",
+    "inputs": [{
+      "type": "text",
+      "queryField": "cluster",
+      "label": "Term"
+    }],
+    "id": "ttpt1sp0u054rwhoajor"
+  }, {
+    "label": "UniParc ID",
+    "inputs": [{
+      "type": "text",
+      "queryField": "sequence",
+      "label": "Term"
+    }],
+    "id": "t5oi76hpowvrsr4fgvi"
+  }, {
+    "label": "Jobs (last 7 days)",
+    "members": [{
+      "label": "Align",
+      "inputs": [{
+        "type": "text",
+        "queryField": "job",
+        "label": "Identifier"
+      }],
+      "id": "yv5nwbe43ig81bawcdi"
+    }, {
+      "label": "Blast",
+      "inputs": [{
+        "type": "text",
+        "queryField": "job",
+        "label": "Identifier"
+      }],
+      "id": "18lv9d2jgup98dunmi"
+    }, {
+      "label": "Retrieve/ID mapping",
+      "inputs": [{
+        "type": "text",
+        "queryField": "job",
+        "label": "Identifier"
+      }],
+      "id": "ufozflmqyqowrsfqd7vi"
+    }, {
+      "label": "Job",
+      "inputs": [{
+        "type": "text",
+        "queryField": "job",
+        "label": "Identifier"
+      }],
+      "id": "6rx17g5qjxd1zm730udi"
+    }],
+    "id": "ncdzkmykv56x2tonu3di"
+  }]
+}
