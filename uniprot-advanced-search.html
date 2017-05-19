@@ -20,7 +20,7 @@
     </ul>
     <h4>Select:</h4>
     <span>[[selection]]</span>
-    <uniprot-tree-select data="[[data.members]]" slot="dropdown-content" selection="{{selection}}"></uniprot-tree-select>
+    <uniprot-tree-select data="[[data.members]]" selection="{{selection}}"></uniprot-tree-select>
   </template>
 
   <script>
@@ -117,7 +117,6 @@
       }
 
       _selectItems(selectedItem) {
-        console.log(selectedItem);
         this._findPathById(selectedItem);
       }
     }

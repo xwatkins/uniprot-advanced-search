@@ -60,7 +60,7 @@
           },
           selection: {
             type: String,
-            notifies: true
+            notify: true
           }
         }
       }
@@ -83,6 +83,7 @@
         for (let item of data) {
           let li = document.createElement('li');
           let anchor = document.createElement('a');
+          anchor.id = item.id;
           anchor.textContent = item.label;
           li.appendChild(anchor);
           el.appendChild(li);
