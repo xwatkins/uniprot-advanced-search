@@ -1803,9 +1803,13 @@
     "members": [{
       "label": "Date of creation",
       "inputs": [{
-        "type": "date range",
-        "queryField": "created",
-        "label": "Term"
+        "type": "date",
+        "queryField": "createdStart",
+        "label": "Start date"
+      }, {
+        "type": "date",
+        "queryField": "createdEnd",
+        "label": "End date"
       }],
       "id": "jfcwq305aiwsnxt7qfr"
     }, {

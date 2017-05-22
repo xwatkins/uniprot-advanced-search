@@ -7,6 +7,7 @@
     <style>
       :host {
         display: block;
+        width: 20em;
       }
       li.branch > a::after {
         position: absolute;
@@ -19,17 +20,15 @@
         border-left-style: solid;
         border-color: transparent transparent transparent #000;
       }
-      li.branch:hover > ul {
-        display: block;
-        opacity: 1;
-      }
       ul li {
         position: relative;
       }
       li ul {
-        display: none;
+        visibility: hidden;
+        position: absolute;
         opacity: 0;
         padding-left: 1em;
+        transition:opacity 0.5s linear;
       }
       .active {
         font-weight: bold;
@@ -91,6 +90,7 @@
             let ul = document.createElement('ul')
             li.className = 'branch';
             li.appendChild(ul);
+            anchor.addEventListener('click', e => this._toggle(ul));
             this._traverseTree(item.members, ul);
           } else {
             li.addEventListener('click', e => this._handleTap(e));
@@ -120,6 +120,16 @@
         this._clearHighlightedPaths();
         this._highlightPathToTarget(e.target);
         this.selection = e.target.id;
+      }
+
+      _toggle(ul) {
+        //TODO use css classes instead of inline
+        //TODO close any other which is not a parent
+        if(ul.style.visibility !== 'visible') {
+          ul.style.cssText = 'visibility:visible; opacity : 1; position:relative;';
+        } else {
+          ul.style.cssText = 'visibility:hidden; opacity : 0; position:absolute;';
+        }
       }
 
     }

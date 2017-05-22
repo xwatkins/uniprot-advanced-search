@@ -1,5 +1,10 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="uniprot-tree-select.html">
 <link rel="import" href="uniprot-styling.html">
 
@@ -10,21 +15,38 @@
     :host {
       display: block;
     }
+    .query-input-container {
+      display: inline-block;
+    }
     </style>
     <h4>Search:</h4>
     <paper-input label="Search" value="{{input}}"> </paper-input>
     <ul>
       <template is="dom-repeat" items="{{paths}}">
-          <li><a on-click="selectNode" id={{item.id}}>{{item.path}}</a></li>
+          <li><a on-click="handleClick" id={{item.id}}>{{item.path}}</a></li>
       </template>
     </ul>
     <h4>Select:</h4>
-    <uniprot-tree-select data="[[data.members]]" selection="{{selection}}"></uniprot-tree-select>
-    <div>
+    <paper-menu-button id="field-drowpdown-container">
+      <paper-button raised slot="dropdown-trigger">{{currentPath}}</paper-button>
+      <uniprot-tree-select slot="dropdown-content" data="[[data.members]]" selection="{{selection}}"></uniprot-tree-select>
+    </paper-menu-button>
+    <div class="query-input-container">
       <template is="dom-repeat" items="{{inputs}}">
-        <label>{{item.label}}
-          <input type="{{item.type}}">
-        </label>
+        <template is="dom-if" if="{{isSelect(item)}}">
+          <paper-dropdown-menu label="{{item.label}}">
+            <paper-listbox slot="dropdown-content" selected="1">
+              <template is="dom-repeat" items="{{item.options}}">
+                <paper-item>{{item}}</paper-item>
+              </template>
+            </paper-listbox>
+            {{item.options}}
+          </paper-dropdown-menu>
+          <!-- paper-dropdown-menu -->
+        </template>
+        <template is="dom-if" if="{{isInput(item)}}">
+          <paper-input type="{{item.type}}" label="{{item.label}}" placeholder="{{item.placeholder}}" id="{{item.queryField}}">
+        </template>
       </template>
     </div>
   </template>
@@ -60,9 +82,14 @@
           },
           inputs: {
             type: Array,
-            value: []
-          }, mode: {
-            type: String
+            value: [{
+              'type': 'text',
+              'label': 'Term',
+              'placeholder': 'A4_human,...'
+            }]
+          }, currentPath: {
+            type: String,
+            value: 'All'
           }
         }
       }
@@ -104,22 +131,20 @@
 
       _findInPath(searchTerm) {
         if (this.data) {
-          //TODO hide dropdown, show autocomplete
           let paths = [];
           this._findPathsInTree(this.data.members, searchTerm, paths, '');
           this.paths = paths;
         }
       }
 
-      _getNode(id) {
-        console.log('done');
+      _selectNode(id) {
         let node = this._traverseTree(this.data, id);
         this.inputs = node.inputs;
+        this.currentPath = node.label;
       }
 
-      selectNode(e) {
-        console.log(e);
-        this._getNode(e.target.id);
+      handleClick(e) {
+        this._selectNode(e.target.id);
       }
 
       _traverseTree(item, id) {
@@ -139,7 +164,16 @@
       }
 
       _selectItems(selectedItem) {
-        this._getNode(selectedItem);
+        this.shadowRoot.querySelector('#field-drowpdown-container').close();
+        this._selectNode(selectedItem);
+      }
+
+      isSelect(item) {
+        return item.type === 'select';
+      }
+
+      isInput(item) {
+        return item.type === 'text' | 'number' | 'hidden';
       }
 
     }
