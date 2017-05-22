@@ -15,12 +15,18 @@
     <paper-input label="Search" value="{{input}}"> </paper-input>
     <ul>
       <template is="dom-repeat" items="{{paths}}">
-          <li><a>{{item}}</a></li>
+          <li><a on-click="selectNode" id={{item.id}}>{{item.path}}</a></li>
       </template>
     </ul>
     <h4>Select:</h4>
-    <span>[[selection]]</span>
     <uniprot-tree-select data="[[data.members]]" selection="{{selection}}"></uniprot-tree-select>
+    <div>
+      <template is="dom-repeat" items="{{inputs}}">
+        <label>{{item.label}}
+          <input type="{{item.type}}">
+        </label>
+      </template>
+    </div>
   </template>
 
   <script>
@@ -51,6 +57,12 @@
           },
           selection: {
             type: String
+          },
+          inputs: {
+            type: Array,
+            value: []
+          }, mode: {
+            type: String
           }
         }
       }
@@ -74,15 +86,15 @@
         //TODO don't think it finds 1st level nodes...
         for (let member of members) {
           let newPath = '';
+          // Leaf node
           if (currentPath.length <= 0) {
             newPath = `${member.label}`;
           } else {
             newPath = `${currentPath} > ${member.label}`;
           }
-          // Leaf node
           if (!member.members) {
             if (newPath.toLowerCase().indexOf(searchTerm.toLowerCase()) > 0) {
-              paths.push(newPath);
+              paths.push({'path': newPath, 'id': member.id});
             }
           } else if (member.members && member.members.length > 0) {
             this._findPathsInTree(member.members, searchTerm, paths, newPath);
@@ -99,26 +111,37 @@
         }
       }
 
-      _findPathById(id) {
-        console.log(this._traverseTree(this.data.members, id, []));
+      _getNode(id) {
+        console.log('done');
+        let node = this._traverseTree(this.data, id);
+        this.inputs = node.inputs;
       }
 
-      _traverseTree(members, id, path) {
-        for (let item of members) {
-          path.push(item);
-          if (item.id === id) { //found it, return the path
-            return path;
-          }
-          if (item.members) {
-            this._traverseTree(item.members, id, path);
-          }
-          path.pop()
+      selectNode(e) {
+        console.log(e);
+        this._getNode(e.target.id);
+      }
+
+      _traverseTree(item, id) {
+        if (item.id === id) {
+          return item;
         }
+        else if (item.members) {
+          let result = null;
+          for (let member of item.members) {
+            if(result === null) {
+              result =  this._traverseTree(member, id);
+            }
+          }
+          return result;
+        }
+        return null;
       }
 
       _selectItems(selectedItem) {
-        this._findPathById(selectedItem);
+        this._getNode(selectedItem);
       }
+
     }
     window.customElements.define(UniProtAdvancedSearch.is, UniProtAdvancedSearch);
   </script>
