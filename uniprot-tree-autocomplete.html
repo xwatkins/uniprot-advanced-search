@@ -1,0 +1,135 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="uniprot-styling.html">
+
+<dom-module id="uniprot-tree-autocomplete">
+  <template>
+    <style include="uniprot-styling"></style>
+    <style>
+      :host {
+        display: block;
+        width: 20em;
+      }
+    </style>
+    <paper-input label="Search" value="{{searchterm}}"> </paper-input>
+    <ul>
+      <template is="dom-repeat" items="{{paths}}">
+          <li><a on-click="handleClick" id="{{_getPathLastId(item)}}">{{_getPathString(item)}}</a></li>
+      </template>
+    </ul>
+  </template>
+
+  <script>
+    /**
+     * `uniprot-tree-autocomplete`
+     * Tree select menu component for UniProt. Uses recursion.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/uniprot-tree-autocomplete-demo.html
+     */
+    class UniProtTreeAutocomplete extends Polymer.Element {
+
+      static get is() {
+        return 'uniprot-tree-autocomplete';
+      }
+
+      static get properties() {
+        return {
+          data: {
+            type: Array
+          },
+          searchterm: {
+            type: String
+          },
+          paths: {
+            type: Array
+          },
+          selectedpath: {
+            type: Array,
+            notify: true
+          }
+        }
+      }
+
+      static get observers() {
+        return [
+          '_findInPath(searchterm)'
+        ]
+      }
+
+      _hasMatchInPath(searchTerm, path) {
+        for(let item of path) {
+          if(item.label.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      _findPathsInTree(item, searchTerm, path) {
+        path.push(item);
+        if(item.members) {
+          for (let member of item.members) {
+            this._findPathsInTree(member, searchTerm, path);
+          }
+        }
+        else if(this._hasMatchInPath(searchTerm, path)) {
+          this.paths.push(path.slice(0));
+        }
+        path.pop();
+      }
+
+      _findInPath(searchTerm) {
+        if (this.data) {
+          this.paths = [];
+          if(searchTerm.length > 0) {
+            this._findPathsInTree(this.data, searchTerm, []);
+          }
+        }
+      }
+
+      _getPathLastId(path) {
+        return path[path.length-1].id;
+      }
+
+      _getPathString(path, maxLength) {
+        let stringPath = '';
+        for(let item of path) {
+          if(stringPath.length <= 0) {
+            stringPath = item.label;
+          } else {
+            stringPath = `${stringPath} > ${item.label}`;
+          }
+        }
+        if(stringPath.length > maxLength) {
+          let strLength = stringPath.length;
+          stringPath = `${stringPath.substring(0,3)}...${stringPath.substring((strLength-maxLength)+6,strLength)}`;
+        }
+        return stringPath;
+      }
+
+      handleClick(e) {
+        let path = this._getPath(this.data.members, e.target.id);
+        this.selectedpath = path;
+      }
+
+      _getPath(members, id, path = []) {
+        for (let item of members) {
+          path.push(item);
+          if (item.id === id) {
+            return path;
+          } else if (item.members) {
+            let result = this._getPath(item.members, id, path);
+            if(result) {
+              return result;
+            }
+          }
+          path.pop();
+        }
+      }
+    }
+
+    window.customElements.define(UniProtTreeAutocomplete.is, UniProtTreeAutocomplete);
+  </script>
+</dom-module>

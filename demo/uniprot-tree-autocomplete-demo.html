@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>uniprot-advanced-search demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../uniprot-tree-autocomplete.html">
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic uniprot-tree-select demo</h3>
+      <demo-snippet>
+        <template>
+            <uniprot-tree-autocomplete data='{"label":"","members":[{"label":"item 1","id":"1","members":[{"label":"item 1p","id":"1p","members":[{"label":"3","id":"3"},{"label":"4","id":"4"}]}]},{"label":"item 2","id":"2"}]}'></uniprot-tree-autocomplete>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
