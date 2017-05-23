@@ -57,28 +57,25 @@
           data: {
             type: Array
           },
-          selection: {
-            type: String,
+          selectedpath: {
+            type: Array,
             notify: true
           }
         }
       }
 
-      constructor() {
-        super();
-      }
-
       connectedCallback() {
         super.connectedCallback();
+        // Might be best to use an observer on data for that?
         this._handleData();
       }
 
       _handleData() {
         let treeRootList = this.$.treerootlist;
-        this._traverseTree(this.data, treeRootList);
+        this._buildUI(this.data, treeRootList);
       }
 
-      _traverseTree(data, el) {
+      _buildUI(data, el) {
         for (let item of data) {
           let li = document.createElement('li');
           let anchor = document.createElement('a');
@@ -91,10 +88,25 @@
             li.className = 'branch';
             li.appendChild(ul);
             anchor.addEventListener('click', e => this._toggle(ul));
-            this._traverseTree(item.members, ul);
+            this._buildUI(item.members, ul);
           } else {
             li.addEventListener('click', e => this._handleTap(e));
           }
+        }
+      }
+
+      _getPath(members, id, path = []) {
+        for (let item of members) {
+          path.push(item);
+          if (item.id === id) {
+            return path;
+          } else if (item.members) {
+            let result = this._getPath(item.members, id, path);
+            if(result) {
+              return result;
+            }
+          }
+          path.pop();
         }
       }
 
@@ -119,7 +131,7 @@
       _handleTap(e) {
         this._clearHighlightedPaths();
         this._highlightPathToTarget(e.target);
-        this.selection = e.target.id;
+        this.selectedpath = this._getPath(this.data, e.target.id);
       }
 
       _toggle(ul) {

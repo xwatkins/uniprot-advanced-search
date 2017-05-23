@@ -15,6 +15,14 @@
     :host {
       display: block;
     }
+    paper-input {
+      display: inline-block;
+    }
+    paper-button.uniprot-button {
+      background-color: #00709b;
+      color: white;
+      text-transform: none;
+    }
     .query-input-container {
       display: inline-block;
     }
@@ -23,13 +31,13 @@
     <paper-input label="Search" value="{{input}}"> </paper-input>
     <ul>
       <template is="dom-repeat" items="{{paths}}">
-          <li><a on-click="handleClick" id={{item.id}}>{{item.path}}</a></li>
+          <li><a on-click="handleClick" id="{{_getPathLastId(item)}}">{{_getPathString(item)}}</a></li>
       </template>
     </ul>
     <h4>Select:</h4>
     <paper-menu-button id="field-drowpdown-container">
-      <paper-button raised slot="dropdown-trigger">{{currentPath}}</paper-button>
-      <uniprot-tree-select slot="dropdown-content" data="[[data.members]]" selection="{{selection}}"></uniprot-tree-select>
+      <paper-button raised slot="dropdown-trigger" class="uniprot-button">{{_getPathString(selectedpath, 30)}}</paper-button>
+      <uniprot-tree-select slot="dropdown-content" data="[[data.members]]" selectedpath="{{selectedpath}}"></uniprot-tree-select>
     </paper-menu-button>
     <div class="query-input-container">
       <template is="dom-repeat" items="{{inputs}}">
@@ -75,10 +83,14 @@
             type: String
           },
           paths: {
-            type: Array
+            type: Array,
+            value: []
           },
-          selection: {
-            type: String
+          selectedpath: {
+            type: Array,
+            value: [{
+              "label":"All"
+            }]
           },
           inputs: {
             type: Array,
@@ -87,85 +99,95 @@
               'label': 'Term',
               'placeholder': 'A4_human,...'
             }]
-          }, currentPath: {
-            type: String,
-            value: 'All'
           }
         }
       }
 
       static get observers() {
         return [
-          '_findInPath(input)', '_selectItems(selection)'
+          '_findInPath(input)', '_selectItems(selectedpath)'
         ]
       }
 
-      constructor() {
-        super();
-      }
-
-      connectedCallback() {
-        super.connectedCallback();
-      }
-
-
-      _findPathsInTree(members, searchTerm, paths, currentPath) {
-        //TODO don't think it finds 1st level nodes...
-        for (let member of members) {
-          let newPath = '';
-          // Leaf node
-          if (currentPath.length <= 0) {
-            newPath = `${member.label}`;
-          } else {
-            newPath = `${currentPath} > ${member.label}`;
-          }
-          if (!member.members) {
-            if (newPath.toLowerCase().indexOf(searchTerm.toLowerCase()) > 0) {
-              paths.push({'path': newPath, 'id': member.id});
-            }
-          } else if (member.members && member.members.length > 0) {
-            this._findPathsInTree(member.members, searchTerm, paths, newPath);
+      _hasMatchInPath(searchTerm, path) {
+        for(let item of path) {
+          if(item.label.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
+            return true;
           }
         }
+        return false;
+      }
+
+      _getPathString(path, maxLength) {
+        let stringPath = '';
+        for(let item of path) {
+          if(stringPath.length <= 0) {
+            stringPath = item.label;
+          } else {
+            stringPath = `${stringPath} > ${item.label}`;
+          }
+        }
+        if(stringPath.length > maxLength) {
+          let strLength = stringPath.length;
+          stringPath = `${stringPath.substring(0,3)}...${stringPath.substring((strLength-maxLength)+6,strLength)}`;
+        }
+        return stringPath;
+      }
+
+      _getPathLastId(path) {
+        return path[path.length-1].id;
+      }
+
+      _findPathsInTree(item, searchTerm, path) {
+        path.push(item);
+        if(item.members) {
+          for (let member of item.members) {
+            this._findPathsInTree(member, searchTerm, path);
+          }
+        }
+        else if(this._hasMatchInPath(searchTerm, path)) {
+          this.paths.push(path.slice(0));
+        }
+        path.pop();
       }
 
       _findInPath(searchTerm) {
         if (this.data) {
-          let paths = [];
-          this._findPathsInTree(this.data.members, searchTerm, paths, '');
-          this.paths = paths;
+          this.paths = [];
+          if(searchTerm.length > 0) {
+            this._findPathsInTree(this.data, searchTerm, []);
+          }
         }
       }
 
-      _selectNode(id) {
-        let node = this._traverseTree(this.data, id);
+      _selectNode(path) {
+        let node = path[path.length - 1];
         this.inputs = node.inputs;
-        this.currentPath = node.label;
+      }
+
+      _getPath(members, id, path = []) {
+        for (let item of members) {
+          path.push(item);
+          if (item.id === id) {
+            return path;
+          } else if (item.members) {
+            let result = this._getPath(item.members, id, path);
+            if(result) {
+              return result;
+            }
+          }
+          path.pop();
+        }
       }
 
       handleClick(e) {
-        this._selectNode(e.target.id);
+        let path = this._getPath(this.data.members, e.target.id);
+        this.selectedpath = path;
       }
 
-      _traverseTree(item, id) {
-        if (item.id === id) {
-          return item;
-        }
-        else if (item.members) {
-          let result = null;
-          for (let member of item.members) {
-            if(result === null) {
-              result =  this._traverseTree(member, id);
-            }
-          }
-          return result;
-        }
-        return null;
-      }
-
-      _selectItems(selectedItem) {
+      _selectItems(selectedpath) {
         this.shadowRoot.querySelector('#field-drowpdown-container').close();
-        this._selectNode(selectedItem);
+        this._selectNode(selectedpath);
       }
 
       isSelect(item) {
