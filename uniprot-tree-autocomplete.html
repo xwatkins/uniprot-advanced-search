@@ -11,9 +11,18 @@
         display: block;
         width: 20em;
       }
+      #autocomplete-content {
+        visibility: hidden;
+        opacity: 0;
+        background-color: white;
+        border:1px solid #CCC;
+        position: absolute;
+        z-index: 1;
+        transition:opacity 0.5s linear;
+      }
     </style>
     <paper-input label="Search" value="{{searchterm}}"> </paper-input>
-    <ul>
+    <ul id="autocomplete-content">
       <template is="dom-repeat" items="{{paths}}">
           <li><a on-click="handleClick" id="{{_getPathLastId(item)}}">{{_getPathString(item)}}</a></li>
       </template>
@@ -86,6 +95,9 @@
           this.paths = [];
           if(searchTerm.length > 0) {
             this._findPathsInTree(this.data, searchTerm, []);
+            this.shadowRoot.querySelector('#autocomplete-content').style.cssText = 'visibility:visible;opacity:1';
+          } else {
+            this.shadowRoot.querySelector('#autocomplete-content').style.cssText = 'visibility:hidden;opacity:0';
           }
         }
       }
@@ -95,6 +107,7 @@
       }
 
       handleClick(e) {
+        this.searchterm = '';
         let path = this._getPath(this.data.members, e.target.id);
         this.selectedpath = path;
       }
