@@ -5,6 +5,7 @@
 <link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../paper-listbox/paper-listbox.html">
 <link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="uniprot-tree-mixin.html">
 <link rel="import" href="uniprot-tree-select.html">
 <link rel="import" href="uniprot-tree-autocomplete.html">
 <link rel="import" href="uniprot-styling.html">
@@ -64,7 +65,7 @@
      * @polymer
      * @demo demo/uniprot-advanced-search-demo.html
      */
-    class UniProtAdvancedSearch extends Polymer.Element {
+    class UniProtAdvancedSearch extends UniProtTreeMixin(Polymer.Element) {
 
       static get is() {
         return 'uniprot-advanced-search';
@@ -96,22 +97,6 @@
         return [
           '_selectItems(selectedpath)'
         ]
-      }
-
-      _getPathString(path, maxLength) {
-        let stringPath = '';
-        for(let item of path) {
-          if(stringPath.length <= 0) {
-            stringPath = item.label;
-          } else {
-            stringPath = `${stringPath} > ${item.label}`;
-          }
-        }
-        if(stringPath.length > maxLength) {
-          let strLength = stringPath.length;
-          stringPath = `${stringPath.substring(0,3)}...${stringPath.substring((strLength-maxLength)+6,strLength)}`;
-        }
-        return stringPath;
       }
 
       _selectNode(path) {

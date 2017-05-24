@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="uniprot-tree-mixin.html">
 <link rel="import" href="uniprot-styling.html">
 
 <dom-module id="uniprot-tree-select">
@@ -46,7 +47,7 @@
      * @polymer
      * @demo demo/uniprot-tree-select-demo.html
      */
-    class UniProtTreeSelect extends Polymer.Element {
+    class UniProtTreeSelect extends UniProtTreeMixin(Polymer.Element) {
 
       static get is() {
         return 'uniprot-tree-select';
@@ -92,21 +93,6 @@
           } else {
             li.addEventListener('click', e => this._handleTap(e));
           }
-        }
-      }
-
-      _getPath(members, id, path = []) {
-        for (let item of members) {
-          path.push(item);
-          if (item.id === id) {
-            return path;
-          } else if (item.members) {
-            let result = this._getPath(item.members, id, path);
-            if(result) {
-              return result;
-            }
-          }
-          path.pop();
         }
       }
 

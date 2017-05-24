@@ -1,0 +1,36 @@
+  <script>
+    UniProtTreeMixin = function(superClass) {
+      return class extends superClass {
+        _getPath(members, id, path = []) {
+          for (let item of members) {
+            path.push(item);
+            if (item.id === id) {
+              return path;
+            } else if (item.members) {
+              let result = this._getPath(item.members, id, path);
+              if(result) {
+                return result;
+              }
+            }
+            path.pop();
+          }
+        }
+
+        _getPathString(path, maxLength) {
+          let stringPath = '';
+          for(let item of path) {
+            if(stringPath.length <= 0) {
+              stringPath = item.label;
+            } else {
+              stringPath = `${stringPath} > ${item.label}`;
+            }
+          }
+          if(stringPath.length > maxLength) {
+            let strLength = stringPath.length;
+            stringPath = `${stringPath.substring(0,3)}...${stringPath.substring((strLength-maxLength)+6,strLength)}`;
+          }
+          return stringPath;
+        }
+      }
+    }
+  </script>
