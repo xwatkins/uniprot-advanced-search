@@ -8,8 +8,11 @@
     <style include="uniprot-styling"></style>
     <style>
       :host {
-        display: block;
+        display: inline-block;
         width: 20em;
+      }
+      paper-input {
+        width: 15em;
       }
       #autocomplete-content {
         visibility: hidden;
@@ -21,7 +24,7 @@
         transition:opacity 0.5s linear;
       }
     </style>
-    <paper-input label="Search" value="{{searchterm}}"> </paper-input>
+    <paper-input label="Search for field" value="{{searchterm}}"> </paper-input>
     <ul id="autocomplete-content">
       <template is="dom-repeat" items="{{paths}}">
           <li><a on-click="handleClick" id="{{_getPathLastId(item)}}">{{_getPathString(item)}}</a></li>

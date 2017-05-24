@@ -29,9 +29,7 @@
       display: inline-block;
     }
     </style>
-    <h4>Search:</h4>
-    <uniprot-tree-autocomplete data="{{data}}" selectedpath="{{selectedpath}}"></uniprot-tree-autocomplete>
-    <h4>Select:</h4>
+    <uniprot-tree-autocomplete data="{{data}}" selectedpath="{{selectedpath}}" style="display:none"></uniprot-tree-autocomplete>
     <paper-menu-button id="field-drowpdown-container">
       <paper-button raised slot="dropdown-trigger" class="uniprot-button">{{_getPathString(selectedpath, 30)}}</paper-button>
       <uniprot-tree-select slot="dropdown-content" data="[[data.members]]" selectedpath="{{selectedpath}}"></uniprot-tree-select>
@@ -99,6 +97,21 @@
         ]
       }
 
+      _showAutocomplete() {
+        this.shadowRoot.querySelector('uniprot-tree-autocomplete').style.display = 'block';
+        this.shadowRoot.querySelector('paper-button').style.display = 'none';
+      }
+
+      _hideAutocomplete() {
+        this.shadowRoot.querySelector('uniprot-tree-autocomplete').style.display = 'none';
+        this.shadowRoot.querySelector('paper-button').style.display = 'block';
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        this.shadowRoot.querySelector('paper-menu-button').addEventListener('opened-changed', e => this._showAutocomplete());
+      }
+
       _selectNode(path) {
         let node = path[path.length - 1];
         this.inputs = node.inputs;
@@ -107,6 +120,7 @@
       _selectItems(selectedpath) {
         this.shadowRoot.querySelector('#field-drowpdown-container').close();
         this._selectNode(selectedpath);
+        this._hideAutocomplete();
       }
 
       isSelect(item) {
