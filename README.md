@@ -1,6 +1,6 @@
 # \<uniprot-advanced-search\>
 
-Advanced search component for UniProt
+Crude prototype of Advanced search component for UniProt
 
 ## Install the Polymer-CLI
 
@@ -11,6 +11,7 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 ```
 $ polymer serve
 ```
+View it here: http://127.0.0.1:8081/components/uniprot-advanced-search/demo/uniprot-advanced-search-demo.html
 
 ## Running Tests
 
